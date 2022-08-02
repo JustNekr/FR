@@ -15,8 +15,8 @@ class PhoneCodeModelSerializer(HyperlinkedModelSerializer):
 
 
 class SendingModelSerializer(HyperlinkedModelSerializer):
-    client_code = PhoneCodeModelSerializer()
-    client_tag = TagModelSerializer()
+    client_code = PhoneCodeModelSerializer(read_only=False, many=False)
+    client_tag = TagModelSerializer(read_only=False, many=False)
 
     class Meta:
         model = Sending

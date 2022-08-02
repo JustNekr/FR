@@ -4,11 +4,9 @@ from django.db import models
 
 # Create your models here.
 class PhoneCode(models.Model):
-
+    id = models.PositiveIntegerField(primary_key=True)
     def __str__(self):
         return f'{self.id}'
-
-    id = models.PositiveIntegerField(primary_key=True)
 
 
 class Tag(models.Model):
