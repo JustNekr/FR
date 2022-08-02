@@ -20,9 +20,9 @@ from rest_framework.routers import DefaultRouter
 from noticeapp.views import SendingModelViewSet, MessageModelViewSet, ClientModelViewSet
 
 router = DefaultRouter()
-router.register('Sending', SendingModelViewSet)
-router.register('Message', MessageModelViewSet)
-router.register('Client', ClientModelViewSet)
+router.register('sending', SendingModelViewSet)
+router.register('message', MessageModelViewSet)
+router.register('client', ClientModelViewSet)
 
 
 urlpatterns = [

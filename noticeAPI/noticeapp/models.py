@@ -4,10 +4,18 @@ from django.db import models
 
 # Create your models here.
 class PhoneCode(models.Model):
+
+    def __str__(self):
+        return f'{self.id}'
+
     id = models.PositiveIntegerField(primary_key=True)
 
 
 class Tag(models.Model):
+
+    def __str__(self):
+        return f'{self.id}'
+
     id = models.CharField(primary_key=True, max_length=120)
 
 
