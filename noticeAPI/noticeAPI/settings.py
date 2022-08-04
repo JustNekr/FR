@@ -29,6 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+REST_FRAMEWORK = {
+    'DATETIME_FORMAT': "%Y-%m-%d %H:%M:%S",
+}
 
 INSTALLED_APPS = [
     'django.contrib.admin',
