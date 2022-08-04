@@ -2,11 +2,14 @@ import json
 import random
 import string
 
+from django.contrib.auth.models import User
 from django.core.management.base import BaseCommand
 from noticeapp.models import Client, Tag, PhoneCode
 
 
 class Command(BaseCommand):
+    User.objects.all().delete()
+    User.objects.create_superuser('nekr', password='123')
 
     def handle(self, *args, **options):
         for i in range(5):

@@ -20,7 +20,6 @@ async def send_msg(session, data):
 
     async with session.post(url=url, headers=headers, data=json.dumps(data)) as response:
         response_status = await response.text()
-        print(f'{data["id"]}:\n{response_status}\n{response.status}')
         if response.ok:
             pass
         else:
@@ -43,7 +42,7 @@ async def send_status(session, data):
                'Content-Type': 'application/json'
                }
 
-    url = f"https://probe.fbrq.cloud/v1/send/{data['id']}"
+    url = f"http://127.0.0.1:8000/api/message/"
 
     async with session.post(url=url, headers=headers, data=json.dumps(data)) as response:
         response_status = await response.text()
@@ -63,11 +62,14 @@ async def sending_status(data_list):
 
         await asyncio.gather(*tasks)
 
+
 def main():
-    '''id = models.BigIntegerField(primary_key=True)
+    """
+    id = models.BigIntegerField(primary_key=True)
     sending_start = models.DateTimeField()
     text = models.TextField()
-    sending_end '''
+    sending_end
+    """
     incoming_data = [{"id": x, "phone": 0, "text": "string"} for x in range(1, 50)]
     data_list = incoming_data
     while data_list:

@@ -5,6 +5,7 @@ from django.db import models
 # Create your models here.
 class PhoneCode(models.Model):
     id = models.PositiveIntegerField(primary_key=True)
+
     def __str__(self):
         return f'{self.id}'
 
@@ -32,6 +33,7 @@ class Sending(models.Model):
     client_code = models.ManyToManyField(PhoneCode)
     client_tag = models.ManyToManyField(Tag)
     sending_end = models.DateTimeField()
+    # status = models.CharField()
 
 
 class Client(models.Model):
@@ -63,9 +65,14 @@ class Message(models.Model):
     •id клиента, которому отправили
     """
 
+    STATUSES = [
+        ('PR', 'в процессе'),
+        ('SG', 'отправлено'),
+        ('ER', 'ошибка'),
+    ]
     #id = models.BigIntegerField(primary_key=True)
     sending_date = models.DateTimeField()
-    status = models.CharField(max_length=128)
+    status = models.CharField(max_length=2, choices=STATUSES)
     client_id = models.ForeignKey(Client, on_delete=models.CASCADE, unique=False)
     sending_id = models.ForeignKey(Sending, on_delete=models.CASCADE, unique=False)
 
